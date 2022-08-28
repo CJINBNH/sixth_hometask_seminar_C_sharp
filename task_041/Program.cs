@@ -2,17 +2,29 @@
 
 Console.Clear();
 
-int[] array = new int[100];
-Random randomFilling = new Random();
-int count = 0;
-for (int i = 0; i < array.Length; i++)
-{
-    array[i] = randomFilling.Next(-10, 10);
-    if (array[i]%2 == 0)
-    {
-        count++;
-    }
+Console.Write($"Введи число М(количество чисел): ");
+int m = Convert.ToInt32(Console.ReadLine());
+int[] massiveNumbers = new int[m];
+
+void InputNumbers(int m){
+for (int i = 0; i < m; i++)
+  {
+    Console.Write($"Введи {i+1} число: ");
+    massiveNumbers[i] = Convert.ToInt32(Console.ReadLine());
+  }
 }
 
-Console.WriteLine('[' + string.Join(", ", array ) + ']');
-Console.WriteLine($"Количество четных чисел в массиве равно: {count}");
+
+int Comparison(int[] massiveNumbers)
+{
+  int count = 0;
+  for (int i = 0; i < massiveNumbers.Length; i++)
+  {
+    if(massiveNumbers[i] > 0 ) count += 1; 
+  }
+  return count;
+}
+
+InputNumbers(m);
+
+Console.WriteLine($"Введено чисел больше 0: {Comparison(massiveNumbers)} ");
